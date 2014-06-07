@@ -8,6 +8,7 @@
  *
  * Copyright (c) 2003-2013 Thomas Graf <tgraf@suug.ch>
  * Copyright (c) 2013 Sassano Systems LLC <joe@sassanosystems.com>
+ * Copyright (c) 2014 Antoni Segura Puimedon <antonisp@celebdor.com>
  */
 
 #ifndef NETLINK_LOCAL_TYPES_H_
@@ -660,6 +661,24 @@ struct rtnl_netem
 	struct rtnl_netem_reo	qnm_ro;
 	struct rtnl_netem_crpt	qnm_crpt;
 	struct rtnl_netem_dist  qnm_dist;
+};
+
+struct rtnl_hfsc_qdisc
+{
+	uint32_t		defcls;
+	uint32_t		mask;
+};
+
+struct rtnl_hfsc_class
+{
+	struct tc_service_curve rsc;
+	struct tc_service_curve fsc;
+	struct tc_service_curve usc;
+	uint32_t		mask;
+	uint64_t		work;
+	uint64_t		rtwork;
+	uint32_t		period;
+	uint32_t		level;
 };
 
 struct rtnl_htb_qdisc
